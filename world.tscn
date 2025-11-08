@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://brfowgym3vbqf"]
+
+[ext_resource type="PackedScene" uid="uid://csvihhksppbla" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://cn842bw5pipym" path="res://world.gd" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://c4urcq2sje3vp" path="res://wave_enemy.tscn" id="2_tlwt5"]
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_fj7yv")
+enemy_scene = ExtResource("2_tlwt5")
+
+[node name="Player" parent="." instance=ExtResource("1_f3sb7")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="DifficultyTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true

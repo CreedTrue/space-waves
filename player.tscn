@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://csvihhksppbla"]
+
+[ext_resource type="Texture2D" uid="uid://cb02mucfldt8e" path="res://icon.svg" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://c78uev3ok7oou" path="res://shield.gd" id="2_onrkg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 63.007935
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+size = Vector2(20, 120)
+
+[node name="Player" type="Node2D"]
+
+[node name="MainBody2" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="MainBody2"]
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainBody2"]
+shape = SubResource("CircleShape2D_onrkg")
+
+[node name="Shield2" type="Area2D" parent="."]
+collision_mask = 12
+script = ExtResource("2_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield2"]
+position = Vector2(100, 0)
+scale = Vector2(0.25, 1)
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield2"]
+position = Vector2(100, 0)
+shape = SubResource("RectangleShape2D_4flbx")
+
+[connection signal="area_entered" from="Shield2" to="Shield2" method="_on_area_entered"]
+[connection signal="area_exited" from="Shield2" to="Shield2" method="_on_area_exited"]
