@@ -9,6 +9,8 @@ extends Node2D
 @onready var spawn_timer = $SpawnTimer
 @onready var difficulty_timer = $DifficultyTimer
 
+var player_score: int = 0
+
 # --- NEW STATE VARIABLES ---
 var difficulty_level: int = 1
 var current_enemy_speed: float = 65.0
@@ -22,6 +24,8 @@ func _ready():
 	
 	# Start the game at level 1
 	_set_difficulty(difficulty_level)
+	#reset player score when game loads
+	player_score = 0
 
 
 # This function runs every 15 seconds (or whatever you set)

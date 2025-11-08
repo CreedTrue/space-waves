@@ -4,6 +4,7 @@ extends Area2D
 @export var speed: float = 75.0
 var move_direction: Vector2 = Vector2.ZERO
 
+signal wave_destroyed
 # Sprites base color
 var my_color: ColorSystem.ColorType
 
@@ -28,4 +29,6 @@ func hit_by_shield(shield_color: ColorSystem.ColorType):
 			#var explosion = explosion_scene.instantiate()
 			#get_parent().add_child(explosion)
 			#explosion.global_position = self.global_position
+		emit_signal("wave_destroyed")
+		
 		queue_free()
