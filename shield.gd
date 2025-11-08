@@ -12,6 +12,7 @@ var current_color: ColorSystem.ColorType
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
 
 func _on_area_entered(area):
 	# Check if the thing we hit has our "hit_by_shield" function
