@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://csvihhksppbla"]
+[gd_scene load_steps=6 format=3 uid="uid://csvihhksppbla"]
 
 [ext_resource type="Texture2D" uid="uid://cb02mucfldt8e" path="res://icon.svg" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bl1vjg3f8r5lx" path="res://player_body.gd" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://c78uev3ok7oou" path="res://shield.gd" id="2_onrkg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
@@ -13,6 +14,7 @@ size = Vector2(20, 120)
 
 [node name="MainBody2" type="Area2D" parent="."]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_i3pqv")
 
 [node name="Sprite2D" type="Sprite2D" parent="MainBody2"]
 texture = ExtResource("1_4flbx")

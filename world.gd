@@ -8,13 +8,15 @@ extends Node2D
 @onready var player = $Player
 @onready var spawn_timer = $SpawnTimer
 @onready var difficulty_timer = $DifficultyTimer
+@onready var score_label = $ScoreLabel
 
-var player_score: int = 0
+var player_time_score: float = 0
 
 # --- NEW STATE VARIABLES ---
 var difficulty_level: int = 1
 var current_enemy_speed: float = 65.0
 var available_colors: Array[ColorSystem.ColorType] = []
+var start_time
 
 
 func _ready():
@@ -25,8 +27,15 @@ func _ready():
 	# Start the game at level 1
 	_set_difficulty(difficulty_level)
 	#reset player score when game loads
-	player_score = 0
+	start_time = Time.get_unix_time_from_system()
+	player_time_score = 0
 
+func _process(delta: float) -> void:
+	var current_time = Time.get_unix_time_from_system()
+	player_time_score = current_time - start_time
+	
+	score_label.set_text(str(snapped(player_time_score, 0.01)))
+	
 
 # This function runs every 15 seconds (or whatever you set)
 func _on_difficulty_timer_timeout():

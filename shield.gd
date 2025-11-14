@@ -14,7 +14,8 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	
-	# TODO: COnnect the wave_destroyed signal to adding to the score.
+	# TODO: COnnect the wave_destroyed signal to adding to the score. This would be if we want to do scoring by points instead of time.
+	
 	
 	change_color(ColorSystem.ColorType.RED)
 
