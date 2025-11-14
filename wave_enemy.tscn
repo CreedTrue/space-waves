@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xndqa"]
 size = Vector2(120, 120)
 
-[node name="EnemyWave" type="Area2D"]
+[node name="EnemyWave" type="Area2D" groups=["enemies"]]
 scale = Vector2(0.2, 1.2)
 collision_layer = 4
 collision_mask = 3

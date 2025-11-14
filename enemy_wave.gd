@@ -7,6 +7,7 @@ var move_direction: Vector2 = Vector2.ZERO
 signal wave_destroyed
 # Sprites base color
 var my_color: ColorSystem.ColorType
+var damage = 100
 
 # You can add this back in later!
 # @export var explosion_scene: PackedScene 
