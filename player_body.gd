@@ -1,6 +1,6 @@
 extends Area2D
 
-var player_health = 500
+var player_health = 100
 var max_health = 1000
 var base_recovery_rate = 1
 @onready var health_label = $HealthLabel

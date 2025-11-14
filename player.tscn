@@ -49,6 +49,13 @@ texture = ExtResource("1_4flbx")
 position = Vector2(100, 0)
 shape = SubResource("RectangleShape2D_4flbx")
 
+[node name="PlaceHolder" type="Label" parent="."]
+offset_left = -44.0
+offset_top = -10.0
+offset_right = 43.0
+offset_bottom = 13.0
+text = "Game Over"
+
 [connection signal="area_entered" from="MainBody2" to="MainBody2" method="_on_area_entered"]
 [connection signal="area_entered" from="Shield2" to="Shield2" method="_on_area_entered"]
 [connection signal="area_exited" from="Shield2" to="Shield2" method="_on_area_exited"]

@@ -127,4 +127,4 @@ func _on_spawn_timer_timeout():
 func _on_player_game_over():
 	print("main game over called")
 	# Make the game over logic here. Probably freeze the waves and have the main player body explode?
-	pass
+	get_tree().paused = true
