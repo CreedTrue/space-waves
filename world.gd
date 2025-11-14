@@ -23,6 +23,7 @@ func _ready():
 	# Connect signals
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	difficulty_timer.timeout.connect(_on_difficulty_timer_timeout)
+	player.game_over.connect(_on_player_game_over)
 	
 	# Start the game at level 1
 	_set_difficulty(difficulty_level)
@@ -122,3 +123,8 @@ func _on_spawn_timer_timeout():
 
 	# 5. Add it to the scene
 	add_child(enemy)
+
+func _on_player_game_over():
+	print("main game over called")
+	# Make the game over logic here. Probably freeze the waves and have the main player body explode?
+	pass

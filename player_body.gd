@@ -4,6 +4,7 @@ var player_health = 500
 var max_health = 1000
 var base_recovery_rate = 1
 @onready var health_label = $HealthLabel
+signal game_over
 
 func _ready() -> void:
 	health_label.set_text(str(player_health))
@@ -28,5 +29,6 @@ func enemy_hit(damage):
 	if player_health < 0:
 		player_health = 0
 		#Player dead send end game signal
+		game_over.emit()
 	
 	health_label.set_text(str(ceil(int(player_health))))
