@@ -26,8 +26,8 @@ wait_time = 15.0
 autostart = true
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = -548.0
-offset_top = -310.0
-offset_right = -348.0
-offset_bottom = -277.0
+offset_left = -308.0
+offset_top = -315.0
+offset_right = -108.0
+offset_bottom = -282.0
 text = "0"

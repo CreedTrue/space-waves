@@ -37,6 +37,7 @@ animations = [{
 }]
 
 [node name="Player" type="Node2D"]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_hqtel")
 
 [node name="MainBody2" type="Area2D" parent="."]
@@ -68,24 +69,24 @@ collision_mask = 12
 script = ExtResource("2_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield2"]
-position = Vector2(100, 0)
+position = Vector2(84.62667, 0.24000041)
 shape = SubResource("RectangleShape2D_4flbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shield2"]
-position = Vector2(99, 0)
+position = Vector2(83.62667, 0.24000041)
 rotation = 1.5707964
 scale = Vector2(0.06, 0.04)
 sprite_frames = SubResource("SpriteFrames_ivps1")
 autoplay = "default"
-frame_progress = 0.39025357
+frame_progress = 0.7037762
 
 [node name="Sprite2D" type="Sprite2D" parent="Shield2"]
-position = Vector2(100, -54)
+position = Vector2(84.62667, -53.76)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("9_b26j0")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Shield2"]
-position = Vector2(100, 54)
+position = Vector2(84.62667, 54.24)
 rotation = 3.1415927
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("9_b26j0")
