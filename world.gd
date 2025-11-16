@@ -55,19 +55,34 @@ func _set_difficulty(level: int):
 			spawn_timer.wait_time = 2.0 # How often to spawn
 		2:
 			# Level 2: Red and Blue, slightly faster
+			available_colors = [ColorSystem.ColorType.BLUE]
+			current_enemy_speed = 65.0
+			spawn_timer.wait_time = 2.0
+		3:
+			# Level 3: Green
+			available_colors = [ColorSystem.ColorType.GREEN]
+			current_enemy_speed = 65.0
+			spawn_timer.wait_time = 2.0
+		4:
+			# Level 4: Red and Green, faster
+			available_colors = [ColorSystem.ColorType.RED, ColorSystem.ColorType.GREEN]
+			current_enemy_speed = 75.0
+			spawn_timer.wait_time = 2.0
+		5:
+			# Level 5: Red and Blue
 			available_colors = [ColorSystem.ColorType.RED, ColorSystem.ColorType.BLUE]
 			current_enemy_speed = 75.0
-			spawn_timer.wait_time = 1.8
-		3:
-			# Level 3: All colors, faster
+			spawn_timer.wait_time = 2.0
+		6:
+			# Level 6: All Colors
 			available_colors = [ColorSystem.ColorType.RED, ColorSystem.ColorType.BLUE, ColorSystem.ColorType.GREEN]
-			current_enemy_speed = 110.0
-			spawn_timer.wait_time = 1.4
+			current_enemy_speed = 75.0
+			spawn_timer.wait_time = 2.0
 		_:
 			# All levels after 3:
 			# Keep all colors, but get faster and spawn faster
 			available_colors = [ColorSystem.ColorType.RED, ColorSystem.ColorType.BLUE, ColorSystem.ColorType.GREEN]
-			current_enemy_speed += 10.0 # Get 10px faster each level
+			current_enemy_speed += 5.0 # Get 10px faster each level
 			spawn_timer.wait_time = max(0.2, spawn_timer.wait_time * 0.95) # 5% faster, but cap at 0.2s
 
 

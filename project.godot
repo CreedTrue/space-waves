@@ -23,6 +23,10 @@ ColorSystem="*res://color_system.gd"
 
 window/size/viewport_width=648
 
+[editor]
+
+movie_writer/movie_file="D:/Development/Games/space-waves/game_play.avi"
+
 [global_group]
 
 enemies=""
