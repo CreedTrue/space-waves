@@ -1,21 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4urcq2sje3vp"]
+[gd_scene load_steps=6 format=3 uid="uid://c4urcq2sje3vp"]
 
-[ext_resource type="Texture2D" uid="uid://cb02mucfldt8e" path="res://icon.svg" id="1_oxx8k"]
 [ext_resource type="Script" uid="uid://c1owqjon82758" path="res://enemy_wave.gd" id="1_xndqa"]
+[ext_resource type="Texture2D" uid="uid://cxr75kgqosy8e" path="res://assets/images/wave_1.png" id="2_hew8l"]
+[ext_resource type="Texture2D" uid="uid://dv5gkax1asxrh" path="res://assets/images/wave_2.png" id="3_xoklk"]
+[ext_resource type="Texture2D" uid="uid://dexsc6cmd5x8h" path="res://assets/images/wave_3.png" id="4_kfelw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xndqa"]
-size = Vector2(120, 120)
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjlj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hew8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xoklk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kfelw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="EnemyWave" type="Area2D" groups=["enemies"]]
-scale = Vector2(0.2, 1.2)
+scale = Vector2(0.75, 0.75)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_xndqa")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_oxx8k")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5707964
+scale = Vector2(0.12, 0.12)
+sprite_frames = SubResource("SpriteFrames_fjlj6")
+autoplay = "default"
+frame = 1
+frame_progress = 0.10674149
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xndqa")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-31, -61, -1, -17, 2, 1, -6, 29, -30, 51, -29, 64, -10, 64, 11, 37, 22, 3, 22, -16, -3, -55, -20, -66)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

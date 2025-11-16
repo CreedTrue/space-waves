@@ -1,15 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://csvihhksppbla"]
+[gd_scene load_steps=13 format=3 uid="uid://csvihhksppbla"]
 
 [ext_resource type="Texture2D" uid="uid://cb02mucfldt8e" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dp52rifkbjbf2" path="res://player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://bl1vjg3f8r5lx" path="res://player_body.gd" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://c78uev3ok7oou" path="res://shield.gd" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://ceaw41y41rj6x" path="res://assets/images/shield_1.png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://ddn702iam42y7" path="res://assets/images/shield_2.png" id="6_b26j0"]
+[ext_resource type="Texture2D" uid="uid://bsqnmxacdfo2q" path="res://assets/images/shield_3.png" id="7_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://lxf4iehimrfy" path="res://assets/images/shield_4.png" id="8_nvl01"]
+[ext_resource type="Texture2D" uid="uid://bv5f34em5ybey" path="res://assets/images/shield_endpiece.png" id="9_b26j0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 63.007935
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
-size = Vector2(20, 120)
+size = Vector2(15, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ivps1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dw050")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b26j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n7ghd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nvl01")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_hqtel")
@@ -40,14 +65,28 @@ collision_layer = 2
 collision_mask = 12
 script = ExtResource("2_onrkg")
 
-[node name="Sprite2D" type="Sprite2D" parent="Shield2"]
-position = Vector2(100, 0)
-scale = Vector2(0.25, 1)
-texture = ExtResource("1_4flbx")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield2"]
 position = Vector2(100, 0)
 shape = SubResource("RectangleShape2D_4flbx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shield2"]
+position = Vector2(99, 0)
+rotation = 1.5707964
+scale = Vector2(0.06, 0.04)
+sprite_frames = SubResource("SpriteFrames_ivps1")
+autoplay = "default"
+frame_progress = 0.6539393
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield2"]
+position = Vector2(100, -54)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("9_b26j0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Shield2"]
+position = Vector2(100, 54)
+rotation = 3.1415927
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("9_b26j0")
 
 [node name="PlaceHolder" type="Label" parent="."]
 offset_left = -44.0
