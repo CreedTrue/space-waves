@@ -9,6 +9,7 @@ extends Area2D
 var current_rotation_speed: float = 0.0
 
 var current_color: ColorSystem.ColorType
+var waves_blocked = 0
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
@@ -21,9 +22,17 @@ func _ready() -> void:
 
 func _on_area_entered(area):
 	# Check if the thing we hit has our "hit_by_shield" function
-	if area.has_method("hit_by_shield"):
-		# If it does, call it and pass it our current color
-		area.hit_by_shield(current_color)
+	if area.is_in_group("enemies"):
+		if area.my_color == current_color:
+			# increase wave blocked count
+			waves_blocked += 1
+			print("Waves Blocked:", waves_blocked)
+			# delete wave
+			area.queue_free()
+			
+			if (waves_blocked % 20) == 0:
+				print("New power up given")
+		
 
 func change_color(new_color: ColorSystem.ColorType):
 	current_color = new_color

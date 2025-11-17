@@ -24,12 +24,13 @@ func set_color(new_color: ColorSystem.ColorType):
 	my_color = new_color
 	modulate = ColorSystem.COLOR_MAP[my_color]
 
-func hit_by_shield(shield_color: ColorSystem.ColorType):
-	if my_color == shield_color:
-		#if explosion_scene:
-			#var explosion = explosion_scene.instantiate()
-			#get_parent().add_child(explosion)
-			#explosion.global_position = self.global_position
-		emit_signal("wave_destroyed")
-		
-		queue_free()
+# Unused
+#func hit_by_shield(shield_color: ColorSystem.ColorType):
+	#if my_color == shield_color:
+		##if explosion_scene:
+			##var explosion = explosion_scene.instantiate()
+			##get_parent().add_child(explosion)
+			##explosion.global_position = self.global_position
+		#emit_signal("wave_destroyed")
+		#
+		#queue_free()

@@ -33,7 +33,7 @@ rotation = -1.5707964
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_fjlj6")
 autoplay = "default"
-frame_progress = 0.62295747
+frame_progress = 0.42222455
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-30.666668, -57.333336, -12, -36, -1, -17, 2, 1, -6, 29, -28, 50.666668, -26.666668, 62.666668, -12, 62.666668, 11, 37, 20, 4, 20, -16, 9.333334, -38.666668, -3, -55, -18.666668, -64)

@@ -79,7 +79,7 @@ func _set_difficulty(level: int):
 			current_enemy_speed = 75.0
 			spawn_timer.wait_time = 2.0
 		_:
-			# All levels after 3:
+			# All levels after 6:
 			# Keep all colors, but get faster and spawn faster
 			available_colors = [ColorSystem.ColorType.RED, ColorSystem.ColorType.BLUE, ColorSystem.ColorType.GREEN]
 			current_enemy_speed += 5.0 # Get 10px faster each level
