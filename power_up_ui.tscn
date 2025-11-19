@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1my0hrmsgokj"]
+
+[ext_resource type="Script" uid="uid://c1n20hgcr83dk" path="res://power_up_ui.gd" id="1_2udlp"]
+[ext_resource type="Texture2D" uid="uid://c7amemqktxhrq" path="res://assets/images/shield_icon.png" id="2_xhkty"]
+[ext_resource type="Texture2D" uid="uid://cuxyhc8bu01cj" path="res://assets/images/station.png" id="3_522qw"]
+
+[node name="PowerUpUI" type="CanvasLayer"]
+script = ExtResource("1_2udlp")
+shield_icon = ExtResource("2_xhkty")
+bomb_icon = ExtResource("3_522qw")
+
+[node name="IconContainer" type="VBoxContainer" parent="."]
+offset_left = 596.0
+offset_top = 10.0
+offset_right = 636.0
+offset_bottom = 50.0

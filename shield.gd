@@ -11,6 +11,8 @@ var current_rotation_speed: float = 0.0
 var current_color: ColorSystem.ColorType
 var waves_blocked = 0
 
+signal power_up_earned
+
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
@@ -30,8 +32,9 @@ func _on_area_entered(area):
 			# delete wave
 			area.queue_free()
 			
-			if (waves_blocked % 20) == 0:
+			if (waves_blocked % 5) == 0:
 				print("New power up given")
+				power_up_earned.emit()
 		
 
 func change_color(new_color: ColorSystem.ColorType):

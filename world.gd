@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var enemy_scene: PackedScene 
+@export var auto_shield_scene: PackedScene
 
 # Short pause before waves start spawing
 @export var spawn_buffer: float = 50.0
@@ -9,6 +10,7 @@ extends Node2D
 @onready var spawn_timer = $SpawnTimer
 @onready var difficulty_timer = $DifficultyTimer
 @onready var score_label = $ScoreLabel
+@onready var powerup_ui = $PowerUpUI 
 
 var player_time_score: float = 0
 
@@ -18,12 +20,18 @@ var current_enemy_speed: float = 65.0
 var available_colors: Array[ColorSystem.ColorType] = []
 var start_time
 
+# --- POWERUP SYSTEM ---
+enum PowerupType { SHIELD, BOMB }
+var stored_powerups: Array[PowerupType] = []
+var max_powerups = 4
+
 
 func _ready():
 	# Connect signals
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	difficulty_timer.timeout.connect(_on_difficulty_timer_timeout)
 	player.game_over.connect(_on_player_game_over)
+	player.power_up_earned.connect(_on_player_powerup_earned)
 	
 	# Start the game at level 1
 	_set_difficulty(difficulty_level)
@@ -143,3 +151,57 @@ func _on_player_game_over():
 	print("main game over called")
 	# Make the game over logic here. Probably freeze the waves and have the main player body explode?
 	get_tree().paused = true
+	
+	
+
+# POWERUP SYSTEM
+func _unhandled_input(event):
+	if event.is_action_pressed("use_powerup"):
+		activate_next_powerup()
+
+# 1. REWARD LOGIC
+func _on_player_powerup_earned():
+	if stored_powerups.size() >= max_powerups:
+		return # Inventory full
+	
+	# Pick 0 (Shield) or 1 (Bomb)
+	var new_powerup = [PowerupType.SHIELD, PowerupType.BOMB].pick_random()
+	stored_powerups.append(new_powerup)
+	
+	print("Added powerup: ", new_powerup)
+	powerup_ui.update_icons(stored_powerups)
+
+# 2. ACTIVATION LOGIC
+func activate_next_powerup():
+	if stored_powerups.is_empty():
+		return
+	
+	# Pop the first item (FIFO - First In, First Out)
+	var powerup_to_use = stored_powerups.pop_front()
+	powerup_ui.update_icons(stored_powerups) # Update UI immediately
+	
+	match powerup_to_use:
+		PowerupType.SHIELD:
+			cast_shield_powerup()
+		PowerupType.BOMB:
+			cast_bomb_powerup()
+
+# 3. EFFECTS
+func cast_bomb_powerup():
+	print("BOOM! Screen cleared.")
+	# Get all enemies currently in the scene
+	# Note: Ensure your Enemy script has "class_name EnemyWave" or is in a group "enemies"
+	var enemies = get_tree().get_nodes_in_group("enemies") 
+	
+	for enemy in enemies:
+		# Optional: Add an explosion effect scene here
+		enemy.queue_free()
+
+func cast_shield_powerup():
+	print("Shield Activated!")
+	# Determine what the shield does. 
+	# Example: access the player's shield and make it huge or invincible
+	if player.has_node("Shield2"):
+		var shield = player.get_node("Shield2")
+		# Example custom function you'd write in your Shield script:
+		# shield.activate_super_mode(5.0) # Lasts 5 seconds
