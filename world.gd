@@ -45,6 +45,12 @@ func _process(delta: float) -> void:
 	
 	score_label.set_text(str(snapped(player_time_score, 0.01)))
 	
+	#var autoshields = get_tree().get_nodes_in_group("autoshields") 
+	#if autoshields.size() > 1:
+		#for autoshield in autoshields:
+			#autoshield.get_node("AnimatedSprite2D").modulate = ColorSystem.COLOR_MAP[autoshield.current_color].with_alpha(0.4)
+	#
+	
 
 # This function runs every 15 seconds (or whatever you set)
 func _on_difficulty_timer_timeout():
@@ -165,7 +171,7 @@ func _on_player_powerup_earned():
 		return # Inventory full
 	
 	# Pick 0 (Shield) or 1 (Bomb)
-	var new_powerup = [PowerupType.SHIELD, PowerupType.BOMB].pick_random()
+	var new_powerup = [PowerupType.SHIELD, PowerupType.SHIELD, PowerupType.BOMB].pick_random()
 	stored_powerups.append(new_powerup)
 	
 	print("Added powerup: ", new_powerup)
@@ -202,6 +208,13 @@ func cast_shield_powerup():
 	# Determine what the shield does. 
 	# Example: access the player's shield and make it huge or invincible
 	if player.has_node("Shield2"):
-		var shield = player.get_node("Shield2")
+		#var shield = player.get_node("Shield2")
 		# Example custom function you'd write in your Shield script:
 		# shield.activate_super_mode(5.0) # Lasts 5 seconds
+		var auto_shield_instance = auto_shield_scene.instantiate()
+		var shield_color = player.get_node("Shield2").current_color
+		var new_modulate_color =  ColorSystem.COLOR_MAP[shield_color]
+		new_modulate_color.a = 0.4
+		auto_shield_instance.current_color = shield_color
+		auto_shield_instance.get_node("AnimatedSprite2D").modulate = new_modulate_color
+		add_child(auto_shield_instance)
