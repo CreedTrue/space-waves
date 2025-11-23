@@ -32,7 +32,7 @@ func _on_area_entered(area):
 			# delete wave
 			area.hit_by_shield(current_color)
 			
-			if (waves_blocked % 10) == 0:
+			if (waves_blocked % 1) == 0:
 				print("New power up given")
 				power_up_earned.emit()
 		
