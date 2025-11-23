@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4urcq2sje3vp"]
+[gd_scene load_steps=7 format=3 uid="uid://c4urcq2sje3vp"]
 
 [ext_resource type="Script" uid="uid://c1owqjon82758" path="res://enemy_wave.gd" id="1_xndqa"]
 [ext_resource type="Texture2D" uid="uid://cxr75kgqosy8e" path="res://assets/images/wave_1.png" id="2_hew8l"]
+[ext_resource type="PackedScene" uid="uid://cgx1canu4ka62" path="res://enemy_explosion.tscn" id="2_xoklk"]
 [ext_resource type="Texture2D" uid="uid://dv5gkax1asxrh" path="res://assets/images/wave_2.png" id="3_xoklk"]
 [ext_resource type="Texture2D" uid="uid://dexsc6cmd5x8h" path="res://assets/images/wave_3.png" id="4_kfelw"]
 
@@ -27,13 +28,14 @@ scale = Vector2(0.5, 0.75)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_xndqa")
+explosion_scene = ExtResource("2_xoklk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.5707964
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_fjlj6")
 autoplay = "default"
-frame_progress = 0.42222455
+frame_progress = 0.15348704
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-30.666668, -57.333336, -12, -36, -1, -17, 2, 1, -6, 29, -28, 50.666668, -26.666668, 62.666668, -12, 62.666668, 11, 37, 20, 4, 20, -16, 9.333334, -38.666668, -3, -55, -18.666668, -64)

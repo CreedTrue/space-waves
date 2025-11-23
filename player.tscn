@@ -85,7 +85,7 @@ rotation = 1.5707964
 scale = Vector2(0.06, 0.04)
 sprite_frames = SubResource("SpriteFrames_ivps1")
 autoplay = "default"
-frame_progress = 0.0019864894
+frame_progress = 0.75078374
 
 [node name="Sprite2D" type="Sprite2D" parent="Shield2"]
 position = Vector2(84.62667, -53.76)
