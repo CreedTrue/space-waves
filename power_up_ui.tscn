@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1my0hrmsgokj"]
+[gd_scene load_steps=7 format=3 uid="uid://b1my0hrmsgokj"]
 
 [ext_resource type="Script" uid="uid://c1n20hgcr83dk" path="res://power_up_ui.gd" id="1_2udlp"]
 [ext_resource type="Texture2D" uid="uid://c7amemqktxhrq" path="res://assets/images/shield_icon.png" id="2_xhkty"]
 [ext_resource type="Texture2D" uid="uid://cuxyhc8bu01cj" path="res://assets/images/station.png" id="3_522qw"]
 [ext_resource type="Texture2D" uid="uid://bm2cr51i6xdah" path="res://assets/images/rec_outline.png" id="4_3vxwy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vxwy"]
+bg_color = Color(0.6, 0.6, 0.6, 0.4509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c65r"]
+bg_color = Color(0.89411765, 0.89411765, 0.89411765, 0.7019608)
 
 [node name="PowerUpUI" type="CanvasLayer"]
 script = ExtResource("1_2udlp")
@@ -20,3 +26,15 @@ offset_bottom = 55.0
 position = Vector2(614, 108.99999)
 scale = Vector2(0.1, 0.22)
 texture = ExtResource("4_3vxwy")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 582.00006
+offset_top = 124.0
+offset_right = 586.00006
+offset_bottom = 151.0
+rotation = 1.5697936
+scale = Vector2(-29.046232, 0.33988655)
+theme_override_styles/background = SubResource("StyleBoxFlat_3vxwy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0c65r")
+step = 1.0
+show_percentage = false

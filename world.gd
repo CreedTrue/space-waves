@@ -32,6 +32,8 @@ func _ready():
 	difficulty_timer.timeout.connect(_on_difficulty_timer_timeout)
 	player.game_over.connect(_on_player_game_over)
 	player.power_up_earned.connect(_on_player_powerup_earned)
+	player.power_up_progress_set.connect(_on_player_powerup_progress_setup)
+	player.power_up_progress_update.connect(_on_player_powerup_progress_update)
 	
 	# Start the game at level 1
 	_set_difficulty(difficulty_level)
@@ -164,6 +166,15 @@ func _on_player_game_over():
 func _unhandled_input(event):
 	if event.is_action_pressed("use_powerup"):
 		activate_next_powerup()
+
+# TODO: Create the func for setting the max progress and the progress update func
+func _on_player_powerup_progress_setup(max):
+	print("Progress set:", max)
+	powerup_ui.get_node("ProgressBar").max_value = max
+
+func _on_player_powerup_progress_update(progress):
+	print("Progress updated:", progress)
+	powerup_ui.get_node("ProgressBar").value = progress
 
 # 1. REWARD LOGIC
 func _on_player_powerup_earned():

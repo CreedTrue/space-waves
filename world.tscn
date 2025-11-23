@@ -12,6 +12,8 @@ script = ExtResource("1_fj7yv")
 enemy_scene = ExtResource("2_tlwt5")
 auto_shield_scene = ExtResource("3_036b0")
 
+[node name="PowerUpUI" parent="." instance=ExtResource("6_dwbse")]
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-2, -4)
 scale = Vector2(0.55, 0.55)
@@ -34,5 +36,3 @@ offset_top = -315.0
 offset_right = -108.0
 offset_bottom = -282.0
 text = "0"
-
-[node name="PowerUpUI" parent="." instance=ExtResource("6_dwbse")]

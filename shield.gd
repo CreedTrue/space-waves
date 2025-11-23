@@ -10,17 +10,21 @@ var current_rotation_speed: float = 0.0
 
 var current_color: ColorSystem.ColorType
 var waves_blocked = 0
+var power_up_progress_setting = 10
 
 signal power_up_earned
+signal power_up_progress_setup(max: int)
+signal power_up_progress_update(progress: int)
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
-	
-	# TODO: COnnect the wave_destroyed signal to adding to the score. This would be if we want to do scoring by points instead of time.
-	
-	
 	change_color(ColorSystem.ColorType.RED)
+	
+	call_deferred("broadcast_setup")
+
+func broadcast_setup():
+	power_up_progress_setup.emit(power_up_progress_setting)
 
 func _on_area_entered(area):
 	# Check if the thing we hit has our "hit_by_shield" function
@@ -31,8 +35,10 @@ func _on_area_entered(area):
 			print("Waves Blocked:", waves_blocked)
 			# delete wave
 			area.hit_by_shield(current_color)
+			var power_up_progress = waves_blocked % power_up_progress_setting
+			power_up_progress_update.emit(power_up_progress)
 			
-			if (waves_blocked % 10) == 0:
+			if (power_up_progress) == 0:
 				print("New power up given")
 				power_up_earned.emit()
 		
