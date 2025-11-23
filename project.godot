@@ -27,6 +27,10 @@ window/size/viewport_width=648
 
 movie_writer/movie_file="D:/Development/Games/space-waves/game_play.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/simple_health_bar/plugin.cfg")
+
 [global_group]
 
 enemies=""

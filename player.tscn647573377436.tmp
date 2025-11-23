@@ -56,19 +56,19 @@ shape = SubResource("CircleShape2D_onrkg")
 
 [node name="HealthLabel" type="Label" parent="MainBody2"]
 offset_left = -56.0
-offset_top = -117.333336
+offset_top = -106.0
 offset_right = 52.0
-offset_bottom = -63.333336
+offset_bottom = -52.0
 theme_override_font_sizes/font_size = 24
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HealthBar" parent="MainBody2" instance=ExtResource("4_n7ghd")]
-offset_left = -50.666668
-offset_top = -77.333336
-offset_right = 49.333332
-offset_bottom = -67.333336
+offset_left = -45.333336
+offset_top = -5.3333335
+offset_right = 54.666664
+offset_bottom = 4.6666665
 
 [node name="Shield2" type="Area2D" parent="."]
 collision_layer = 2
@@ -85,7 +85,7 @@ rotation = 1.5707964
 scale = Vector2(0.06, 0.04)
 sprite_frames = SubResource("SpriteFrames_ivps1")
 autoplay = "default"
-frame_progress = 0.0019864894
+frame_progress = 0.29427618
 
 [node name="Sprite2D" type="Sprite2D" parent="Shield2"]
 position = Vector2(84.62667, -53.76)
