@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://brfowgym3vbqf"]
+[gd_scene load_steps=8 format=3 uid="uid://brfowgym3vbqf"]
 
 [ext_resource type="PackedScene" uid="uid://csvihhksppbla" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cn842bw5pipym" path="res://world.gd" id="1_fj7yv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cewcon44ms426" path="res://auto_shield.tscn" id="3_036b0"]
 [ext_resource type="Texture2D" uid="uid://c58lcsd17jp5q" path="res://assets/images/background.png" id="3_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://b1my0hrmsgokj" path="res://power_up_ui.tscn" id="6_dwbse"]
+[ext_resource type="Texture2D" uid="uid://ch5modejfgs6a" path="res://assets/images/explosion_bg.png" id="7_pkg7o"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_fj7yv")
@@ -36,3 +37,7 @@ offset_top = -315.0
 offset_right = -108.0
 offset_bottom = -282.0
 text = "0"
+
+[node name="ExplosionBG" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("7_pkg7o")

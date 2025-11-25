@@ -11,6 +11,7 @@ extends Node2D
 @onready var difficulty_timer = $DifficultyTimer
 @onready var score_label = $ScoreLabel
 @onready var powerup_ui = $PowerUpUI 
+@onready var explosion_bg = $ExplosionBG
 
 var player_time_score: float = 0
 
@@ -213,7 +214,21 @@ func cast_bomb_powerup():
 	for enemy in enemies:
 		# Optional: Add an explosion effect scene here
 		enemy.queue_free()
+	flash_explosion()
 
+func flash_explosion():
+	explosion_bg.self_modulate.a = 1.0
+	
+	var tween = create_tween()
+	
+	# TRANS_CUBIC makes the value change non-linearly (more natural light decay)
+	# EASE_OUT means it changes fast at the start and slows down at the end
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(explosion_bg, "self_modulate:a", 0.0, 0.8)
+	
+
+	
 func cast_shield_powerup():
 	print("Shield Activated!")
 	# Determine what the shield does. 
