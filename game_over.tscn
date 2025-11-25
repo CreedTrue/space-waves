@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ceo8sh7kin7t5"]
+
+[ext_resource type="Texture2D" uid="uid://blfkf2uniia4q" path="res://assets/images/space_background_plain.png" id="1_y26ei"]
+
+[sub_resource type="Gradient" id="Gradient_y26ei"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yxx3c"]
+gradient = SubResource("Gradient_y26ei")
+
+[sub_resource type="Curve" id="Curve_y26ei"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49242425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yxx3c"]
+curve = SubResource("Curve_y26ei")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ccer4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(125, 125, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.03
+alpha_curve = SubResource("CurveTexture_yxx3c")
+
+[node name="GameOver" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(184.99994, 331)
+scale = Vector2(0.63365537, 0.61)
+texture = ExtResource("1_y26ei")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(320, 330)
+scale = Vector2(3.75, 3.79)
+amount = 100
+texture = SubResource("GradientTexture2D_yxx3c")
+lifetime = 3.5
+process_material = SubResource("ParticleProcessMaterial_ccer4")
