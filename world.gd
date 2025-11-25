@@ -28,6 +28,7 @@ var max_powerups = 4
 
 
 func _ready():
+	get_tree().paused = false
 	# Connect signals
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	difficulty_timer.timeout.connect(_on_difficulty_timer_timeout)
@@ -160,7 +161,10 @@ func _on_player_game_over():
 	print("main game over called")
 	# Make the game over logic here. Probably freeze the waves and have the main player body explode?
 	get_tree().paused = true
-	
+	ScoreSystem.TIME_SURVIVIED = player_time_score
+	ScoreSystem.WAVES_BLOCKED = player.shield.waves_blocked
+	print("Time set too:", ScoreSystem.TIME_SURVIVIED, "Waves blocked set too:", ScoreSystem.WAVES_BLOCKED)
+	get_tree().change_scene_to_file("res://game_over.tscn")
 	
 
 # POWERUP SYSTEM
