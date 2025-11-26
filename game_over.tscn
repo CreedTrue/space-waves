@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceo8sh7kin7t5"]
+
+[ext_resource type="Script" uid="uid://bvu8t8prubw0h" path="res://game_over.gd" id="1_ccer4"]
+[ext_resource type="Texture2D" uid="uid://blfkf2uniia4q" path="res://assets/images/space_background_plain.png" id="1_y26ei"]
+
+[sub_resource type="Gradient" id="Gradient_y26ei"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yxx3c"]
+gradient = SubResource("Gradient_y26ei")
+
+[sub_resource type="Curve" id="Curve_y26ei"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49242425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yxx3c"]
+curve = SubResource("Curve_y26ei")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ccer4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(125, 125, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.03
+alpha_curve = SubResource("CurveTexture_yxx3c")
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_ccer4")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(184.99994, 331)
+scale = Vector2(0.63365537, 0.61)
+texture = ExtResource("1_y26ei")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(320, 330)
+scale = Vector2(3.75, 3.79)
+amount = 100
+texture = SubResource("GradientTexture2D_yxx3c")
+lifetime = 3.5
+process_material = SubResource("ParticleProcessMaterial_ccer4")
+
+[node name="GameOverUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 177.0
+offset_right = 502.0
+offset_bottom = 437.0
+
+[node name="TimeLabel" type="Label" parent="GameOverUI/VBoxContainer"]
+layout_mode = 2
+text = "TIME SURVIVED"
+horizontal_alignment = 1
+
+[node name="TimeOutputLabel" type="Label" parent="GameOverUI/VBoxContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="GameOverUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="WavesLabel" type="Label" parent="GameOverUI/VBoxContainer"]
+layout_mode = 2
+text = "WAVES BLOCKED"
+horizontal_alignment = 1
+
+[node name="WavesOutputLabel" type="Label" parent="GameOverUI/VBoxContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="GameOverUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverUI/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverUI/VBoxContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "RESTART"
+
+[node name="LeaderboardButton" type="Button" parent="GameOverUI/VBoxContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "LEADERBOARD"
+
+[connection signal="pressed" from="GameOverUI/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

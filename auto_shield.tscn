@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cewcon44ms426"]
+
+[ext_resource type="Script" uid="uid://bh1nc8fdx03dx" path="res://auto_shield.gd" id="1_slkui"]
+[ext_resource type="Texture2D" uid="uid://rvnbnbt4k408" path="res://assets/images/shield_circle_1.png" id="1_smjja"]
+[ext_resource type="Texture2D" uid="uid://cirl0c8m6iktm" path="res://assets/images/shield_circle_2.png" id="2_slkui"]
+[ext_resource type="Texture2D" uid="uid://d016f3w1yar4" path="res://assets/images/shield_circle_3.png" id="3_0sjn7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t58p5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_smjja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_slkui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0sjn7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ei6e2"]
+radius = 460.0
+
+[node name="AutoShield" type="Node2D" groups=["autoshields"]]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_slkui")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t58p5")
+autoplay = "default"
+frame_progress = 0.0068943617
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ei6e2")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

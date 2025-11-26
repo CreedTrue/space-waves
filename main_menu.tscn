@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4773cnl4qtk3"]
+
+[ext_resource type="Texture2D" uid="uid://blfkf2uniia4q" path="res://assets/images/space_background_plain.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://kdid5nvb3kgr" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://b346xay4i7v6r" path="res://assets/images/space_waves_logo.png" id="2_7vrkn"]
+
+[sub_resource type="Gradient" id="Gradient_fu7sn"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7vrkn"]
+gradient = SubResource("Gradient_fu7sn")
+
+[sub_resource type="Curve" id="Curve_fu7sn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49242425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jix8l"]
+curve = SubResource("Curve_fu7sn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jix8l"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(125, 125, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.03
+alpha_curve = SubResource("CurveTexture_jix8l")
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_fu7sn")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(184.99994, 331)
+scale = Vector2(0.63365537, 0.61)
+texture = ExtResource("1_06t4h")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(320, 330)
+scale = Vector2(3.75, 3.79)
+amount = 100
+texture = SubResource("GradientTexture2D_7vrkn")
+lifetime = 3.5
+process_material = SubResource("ParticleProcessMaterial_jix8l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(317, 282)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_7vrkn")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 649.0
+offset_bottom = 649.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="ControlsButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "CONTROLS"
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "CREDITS"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

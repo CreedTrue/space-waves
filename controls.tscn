@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://bg5cearc4ri3p"]
+
+[ext_resource type="Script" uid="uid://uldwleuqrkbu" path="res://controls.gd" id="1_dob1i"]
+[ext_resource type="Texture2D" uid="uid://blfkf2uniia4q" path="res://assets/images/space_background_plain.png" id="1_ff64o"]
+[ext_resource type="Texture2D" uid="uid://dkq2uxtsvnk2g" path="res://assets/images/controls_title.png" id="2_kxvun"]
+[ext_resource type="Texture2D" uid="uid://b101gwvljetk6" path="res://assets/images/control_instrucitons.png" id="3_kq3yo"]
+[ext_resource type="Texture2D" uid="uid://bxu57igri5051" path="res://assets/images/bomb_icon.png" id="4_kxtwu"]
+[ext_resource type="Texture2D" uid="uid://c7amemqktxhrq" path="res://assets/images/shield_icon.png" id="5_kxvun"]
+[ext_resource type="Texture2D" uid="uid://ch5modejfgs6a" path="res://assets/images/explosion_bg.png" id="6_kxtwu"]
+[ext_resource type="Texture2D" uid="uid://c340vw6wrt81e" path="res://assets/images/screenshot.png" id="7_dob1i"]
+
+[sub_resource type="Gradient" id="Gradient_y26ei"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dob1i"]
+gradient = SubResource("Gradient_y26ei")
+
+[sub_resource type="Curve" id="Curve_hkas0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49242425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yxx3c"]
+curve = SubResource("Curve_hkas0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cf7nr"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(125, 125, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.03
+alpha_curve = SubResource("CurveTexture_yxx3c")
+
+[node name="Controls" type="Node2D"]
+script = ExtResource("1_dob1i")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(184.99994, 331)
+scale = Vector2(0.63365537, 0.61)
+texture = ExtResource("1_ff64o")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(320, 330)
+scale = Vector2(3.75, 3.79)
+amount = 100
+texture = SubResource("GradientTexture2D_dob1i")
+lifetime = 3.5
+process_material = SubResource("ParticleProcessMaterial_cf7nr")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(327, 179)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_kxvun")
+
+[node name="Controls" type="Sprite2D" parent="."]
+position = Vector2(227, 275)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_kq3yo")
+
+[node name="BombIcon" type="Sprite2D" parent="."]
+position = Vector2(507.99997, 353.99997)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_kxtwu")
+
+[node name="ShieldIcon" type="Sprite2D" parent="."]
+position = Vector2(503.99997, 235)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_kxvun")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 467.0
+offset_top = 155.0
+offset_right = 550.0
+offset_bottom = 178.0
+text = "Power Ups"
+
+[node name="Frame" type="Sprite2D" parent="."]
+position = Vector2(238.99998, 387.00003)
+scale = Vector2(0.14, 0.08)
+texture = ExtResource("6_kxtwu")
+
+[node name="Screenshot" type="Sprite2D" parent="Frame"]
+position = Vector2(-7.1427474, -0.00038146976)
+scale = Vector2(7.1428576, 12.500001)
+texture = ExtResource("7_dob1i")
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 301.0
+offset_top = 496.0
+offset_right = 351.0
+offset_bottom = 527.0
+text = "BACK"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

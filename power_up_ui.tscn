@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1my0hrmsgokj"]
+
+[ext_resource type="Script" uid="uid://c1n20hgcr83dk" path="res://power_up_ui.gd" id="1_2udlp"]
+[ext_resource type="Texture2D" uid="uid://c7amemqktxhrq" path="res://assets/images/shield_icon.png" id="2_xhkty"]
+[ext_resource type="Texture2D" uid="uid://bxu57igri5051" path="res://assets/images/bomb_icon.png" id="3_3vxwy"]
+[ext_resource type="Texture2D" uid="uid://bm2cr51i6xdah" path="res://assets/images/rec_outline.png" id="4_3vxwy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vxwy"]
+bg_color = Color(0.6, 0.6, 0.6, 0.4509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c65r"]
+bg_color = Color(0.89411765, 0.89411765, 0.89411765, 0.7019608)
+
+[node name="PowerUpUI" type="CanvasLayer"]
+script = ExtResource("1_2udlp")
+shield_icon = ExtResource("2_xhkty")
+bomb_icon = ExtResource("3_3vxwy")
+
+[node name="IconContainer" type="VBoxContainer" parent="."]
+offset_left = 594.0
+offset_top = 15.0
+offset_right = 634.0
+offset_bottom = 55.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(614, 108.99999)
+scale = Vector2(0.1, 0.22)
+texture = ExtResource("4_3vxwy")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 582.00006
+offset_top = 124.0
+offset_right = 586.00006
+offset_bottom = 151.0
+rotation = 1.5697936
+scale = Vector2(-29.046232, 0.33988655)
+theme_override_styles/background = SubResource("StyleBoxFlat_3vxwy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0c65r")
+step = 1.0
+show_percentage = false
