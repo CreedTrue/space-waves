@@ -49,10 +49,10 @@ offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI"]
 layout_mode = 0
-offset_left = 135.0
-offset_top = 167.0
-offset_right = 505.0
-offset_bottom = 427.0
+offset_left = 132.0
+offset_top = 177.0
+offset_right = 502.0
+offset_bottom = 437.0
 
 [node name="TimeLabel" type="Label" parent="GameOverUI/VBoxContainer"]
 layout_mode = 2
