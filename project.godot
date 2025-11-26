@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Space Waves"
-run/main_scene="uid://brfowgym3vbqf"
+run/main_scene="uid://b4773cnl4qtk3"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

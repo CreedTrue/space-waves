@@ -4,17 +4,17 @@
 [ext_resource type="Script" uid="uid://kdid5nvb3kgr" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://b346xay4i7v6r" path="res://assets/images/space_waves_logo.png" id="2_7vrkn"]
 
-[sub_resource type="Gradient" id="Gradient_y26ei"]
+[sub_resource type="Gradient" id="Gradient_fu7sn"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7vrkn"]
-gradient = SubResource("Gradient_y26ei")
+gradient = SubResource("Gradient_fu7sn")
 
 [sub_resource type="Curve" id="Curve_fu7sn"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49242425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_yxx3c"]
+[sub_resource type="CurveTexture" id="CurveTexture_jix8l"]
 curve = SubResource("Curve_fu7sn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jix8l"]
@@ -24,7 +24,7 @@ emission_box_extents = Vector3(125, 125, 1)
 gravity = Vector3(0, 0, 0)
 scale_min = 0.03
 scale_max = 0.03
-alpha_curve = SubResource("CurveTexture_yxx3c")
+alpha_curve = SubResource("CurveTexture_jix8l")
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_fu7sn")
@@ -73,3 +73,5 @@ layout_mode = 2
 text = "CREDITS"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

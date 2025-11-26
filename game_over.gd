@@ -4,7 +4,7 @@ extends Node2D
 @onready var waves_output = $GameOverUI/VBoxContainer/WavesOutputLabel
 
 func _ready() -> void:
-	time_output.set_text(str(snapped(ScoreSystem.TIME_SURVIVIED, 0.01)), "Seconds")
+	time_output.set_text((str(snapped(ScoreSystem.TIME_SURVIVIED, 0.01))+ " Seconds"))
 	waves_output.set_text(str(ScoreSystem.WAVES_BLOCKED))
 	
 
