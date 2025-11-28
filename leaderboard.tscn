@@ -1,3 +1,135 @@
-[gd_scene format=3 uid="uid://fsacn5jvumnu"]
+[gd_scene load_steps=7 format=3 uid="uid://fsacn5jvumnu"]
+
+[ext_resource type="Texture2D" uid="uid://blfkf2uniia4q" path="res://assets/images/space_background_plain.png" id="1_3ilyb"]
+
+[sub_resource type="Gradient" id="Gradient_fu7sn"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2t7te"]
+gradient = SubResource("Gradient_fu7sn")
+
+[sub_resource type="Curve" id="Curve_oli24"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49242425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jix8l"]
+curve = SubResource("Curve_oli24")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y1kwj"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(125, 125, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.03
+alpha_curve = SubResource("CurveTexture_jix8l")
 
 [node name="Leaderboard" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(184.99994, 331)
+scale = Vector2(0.63365537, 0.61)
+texture = ExtResource("1_3ilyb")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(320, 330)
+scale = Vector2(3.75, 3.79)
+amount = 100
+texture = SubResource("GradientTexture2D_2t7te")
+lifetime = 3.5
+process_material = SubResource("ParticleProcessMaterial_y1kwj")
+
+[node name="LeaderboardDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 271.0
+offset_top = 32.0
+offset_right = 311.0
+offset_bottom = 72.0
+
+[node name="Label" type="Label" parent="LeaderboardDisplay"]
+layout_mode = 0
+offset_left = -8.0
+offset_right = 107.0
+offset_bottom = 23.0
+text = "LEADERBOARD"
+
+[node name="Label2" type="Label" parent="LeaderboardDisplay"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 27.0
+offset_right = 104.0
+offset_bottom = 50.0
+text = "NAME --> TIME"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LeaderboardDisplay"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = -96.0
+offset_top = 56.0
+offset_right = 194.0
+offset_bottom = 308.0
+text = "NAME --> TIME"
+horizontal_alignment = 1
+
+[node name="Submission" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 190.0
+offset_top = 356.0
+offset_right = 230.0
+offset_bottom = 396.0
+
+[node name="NameLabel" type="Label" parent="Submission"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "NAME:"
+
+[node name="LineEdit" type="LineEdit" parent="Submission"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 62.0
+offset_top = -4.0
+offset_right = 130.5625
+offset_bottom = 27.0
+placeholder_text = "type here"
+
+[node name="TimeLabel" type="Label" parent="Submission"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 37.0
+offset_right = 84.0
+offset_bottom = 60.0
+text = "TIME (sec):"
+
+[node name="LineEdit2" type="LineEdit" parent="Submission"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 35.0
+offset_right = 158.5625
+offset_bottom = 66.0
+text = "0000"
+editable = false
+
+[node name="SubmitButton" type="Button" parent="Submission"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 84.0
+offset_right = 172.0
+offset_bottom = 115.0
+text = "SUBMIT"
+
+[node name="ReplayButton" type="Button" parent="."]
+offset_left = 243.0
+offset_top = 521.0
+offset_right = 318.0
+offset_bottom = 552.0
+text = "RESTART"
+
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 332.0
+offset_top = 521.0
+offset_right = 389.0
+offset_bottom = 552.0
+text = "MENU"
