@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ColorSystem="*res://color_system.gd"
 ScoreSystem="*res://score_system.gd"
+AudioMangerScene="*res://audio_manager.tscn"
 
 [display]
 
@@ -30,7 +31,7 @@ movie_writer/movie_file="C:/Users/creed/Videos/game_play.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/simple_health_bar/plugin.cfg")
+enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons/simple_health_bar/plugin.cfg")
 
 [global_group]
 

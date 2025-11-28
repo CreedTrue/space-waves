@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://icu1uvvgr7lk"]
+
+[ext_resource type="Script" uid="uid://btgjx1r1pe7rt" path="res://addons/audio_manager/audio_manager.gd" id="1_6jj5d"]
+[ext_resource type="Script" uid="uid://bqy6pge5rkfca" path="res://addons/audio_manager/audio_manager_omni.gd" id="2_5olve"]
+[ext_resource type="AudioStream" uid="uid://djcq1kg14qhid" path="res://assets/audio/8-Bit-Waves.wav" id="3_nhx87"]
+
+[sub_resource type="Resource" id="Resource_l2k84"]
+script = ExtResource("2_5olve")
+audio_name = "background_music"
+audio_stream = ExtResource("3_nhx87")
+loop = true
+auto_play = true
+metadata/_custom_type_script = "uid://bqy6pge5rkfca"
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_6jj5d")
+audios_omni = Array[ExtResource("2_5olve")]([SubResource("Resource_l2k84")])
+metadata/_custom_type_script = "uid://btgjx1r1pe7rt"
