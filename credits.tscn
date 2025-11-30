@@ -49,11 +49,52 @@ offset_bottom = 527.0
 text = "BACK"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 603.0
-offset_bottom = 105.0
-text = "Sci-Fi_Explosion_2.wav by Anomaex -- https://freesound.org/s/490266/ -- License: Creative Commons 0
-Big Sci-Fi Explosion/Bomb (Close) [Mixed] by EvanBoyerman -- https://freesound.org/s/393374/ -- License: Attribution NonCommercial 3.0
+offset_left = 28.0
+offset_top = 433.0
+offset_right = 631.0
+offset_bottom = 497.0
+text = "Big Sci-Fi Explosion/Bomb (Close) [Mixed] by EvanBoyerman -- https://freesound.org/s/393374/ -- License: Attribution NonCommercial 3.0
 "
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 17.0
+offset_top = 106.0
+offset_right = 635.0
+offset_bottom = 183.0
+bbcode_enabled = true
+text = "[b]Music[/b] By [b]Doug Lovelock[/b]
+Check out more of his amazong work here!
+https://www.douglovelock.com/
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 258.0
+offset_top = 186.0
+offset_right = 379.0
+offset_bottom = 217.0
+text = "Doug Lovelock"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 14.0
+offset_top = 265.0
+offset_right = 625.0
+offset_bottom = 344.0
+bbcode_enabled = true
+text = "[b]Programming, Effects, Art, and Design[/b] By [b]Creed G.[/b]
+Check out his other games here!
+https://tiny-crystal.itch.io/"
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 285.0
+offset_top = 351.0
+offset_right = 359.0
+offset_bottom = 382.0
+text = "Creed G."
 
 [connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
