@@ -72,6 +72,9 @@ layout_mode = 2
 layout_mode = 2
 text = "CREDITS"
 
+[connection signal="button_down" from="CenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_button_down"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="button_down" from="CenterContainer/VBoxContainer/HBoxContainer/ControlsButton" to="." method="_on_controls_button_button_down"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="button_down" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_button_down"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

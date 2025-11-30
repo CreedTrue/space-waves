@@ -211,6 +211,7 @@ func activate_next_powerup():
 # 3. EFFECTS
 func cast_bomb_powerup():
 	print("BOOM! Screen cleared.")
+	$"/root/AudioMangerScene".play_audio_2d("big_explosion")
 	# Get all enemies currently in the scene
 	# Note: Ensure your Enemy script has "class_name EnemyWave" or is in a group "enemies"
 	var enemies = get_tree().get_nodes_in_group("enemies") 
@@ -235,6 +236,7 @@ func flash_explosion():
 	
 func cast_shield_powerup():
 	print("Shield Activated!")
+	$"/root/AudioMangerScene".play_audio_2d("shield_buzz_start")
 	# Determine what the shield does. 
 	# Example: access the player's shield and make it huge or invincible
 	if player.has_node("Shield2"):

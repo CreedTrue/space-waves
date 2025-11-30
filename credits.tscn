@@ -48,4 +48,12 @@ offset_right = 347.0
 offset_bottom = 527.0
 text = "BACK"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 603.0
+offset_bottom = 105.0
+text = "Sci-Fi_Explosion_2.wav by Anomaex -- https://freesound.org/s/490266/ -- License: Creative Commons 0
+Big Sci-Fi Explosion/Bomb (Close) [Mixed] by EvanBoyerman -- https://freesound.org/s/393374/ -- License: Attribution NonCommercial 3.0
+"
+
+[connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

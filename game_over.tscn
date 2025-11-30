@@ -94,4 +94,5 @@ process_mode = 3
 layout_mode = 2
 text = "LEADERBOARD"
 
+[connection signal="button_down" from="GameOverUI/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_button_down"]
 [connection signal="pressed" from="GameOverUI/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

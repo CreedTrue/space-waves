@@ -12,3 +12,7 @@ func _ready() -> void:
 func _on_restart_button_pressed() -> void:
 	print("reset button pressed")
 	get_tree().change_scene_to_file("res://world.tscn")
+
+
+func _on_restart_button_button_down() -> void:
+	$"/root/AudioMangerScene".play_audio_omni("button_chip") # Replace with function body.

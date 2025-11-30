@@ -12,3 +12,15 @@ func _on_credits_button_pressed() -> void:
 
 func _on_controls_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://controls.tscn")
+
+
+func _on_play_button_button_down() -> void:
+	$"/root/AudioMangerScene".play_audio_omni("button_chip") # Replace with function body.
+
+
+func _on_controls_button_button_down() -> void:
+	$"/root/AudioMangerScene".play_audio_omni("button_chip") # Replace with function body.
+
+
+func _on_credits_button_button_down() -> void:
+	$"/root/AudioMangerScene".play_audio_omni("button_chip") # Replace with function body.
